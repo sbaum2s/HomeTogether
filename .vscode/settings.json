@@ -1,0 +1,6 @@
+{
+    "git.ignoreLimitWarning": true,
+    "workbench.editor.limit.enabled": true,
+    "workbench.editor.limit.value": 5,
+    "editor.formatOnSave": true
+}
