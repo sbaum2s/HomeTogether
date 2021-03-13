@@ -289,7 +289,6 @@
 
         <v-card-actions>
           <v-spacer></v-spacer>
-
           <v-btn text color="primary" @click="dialog = false">
             Erstellen
           </v-btn>
