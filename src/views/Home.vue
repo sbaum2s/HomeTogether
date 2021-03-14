@@ -63,7 +63,7 @@
         <v-card elevation="6" class="my-3" outlined>
           <v-card-title>Deine Termine auf einem Blick!</v-card-title>
           <v-card-subtitle
-            >Für Heute sind <strong>{{ todayEventsCount }}</strong> Termine
+            >Für Heute ist <strong>{{ todayEventsCount }}</strong> Termin
             vorgemerkt.</v-card-subtitle
           >
           <div v-for="(event, index) in todayEvents" :key="index" class="pb-3">

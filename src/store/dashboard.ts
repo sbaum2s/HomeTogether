@@ -30,21 +30,6 @@ const state = {
             icon: "mdi-format-list-checks",
             to: "/task-plan"
         },
-        {
-            title: "empty",
-            icon: "mdi-map-marker",
-            to: "/test"
-        },
-        {
-            title: "empty",
-            icon: "mdi-bell",
-            to: "/components/notifications"
-        },
-        {
-            title: "empty",
-            icon: "mdi-cog-transfer",
-            to: "/durban"
-        }
     ]
 };
 

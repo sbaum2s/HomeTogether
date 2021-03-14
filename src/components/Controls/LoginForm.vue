@@ -24,7 +24,7 @@
                 v-model="username"
                 prepend-icon="mdi-account"
                 name="Username"
-                label="Username"
+                label="Name"
                 :rules="[nameRules.required]"
                 @click="resetError"
               ></v-text-field>

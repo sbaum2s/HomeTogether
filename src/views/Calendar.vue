@@ -77,6 +77,7 @@
 
       <v-menu
         v-model="selectedOpen"
+        v-if="selectedOpen"
         :close-on-content-click="false"
         :activator="selectedElement"
         offset-x
@@ -92,6 +93,10 @@
               <v-icon>mdi-delete</v-icon>
             </v-btn>
           </v-toolbar>
+          <v-card-subtitle>
+            {{ selectedEvent.start.split(" ")[1] }} Uhr -
+            {{ selectedEvent.end.split(" ")[1] }} Uhr</v-card-subtitle
+          >
           <v-card-text>
             <span v-html="selectedEvent.details"></span>
           </v-card-text>
