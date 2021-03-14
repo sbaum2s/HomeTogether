@@ -415,6 +415,7 @@ export default {
         date.getTime() - date.getTimezoneOffset() * 60 * 1000
       ).toISOString();
 
+      // datetime format YYYY-MM-DD HH:MM
       const todayDate = today.substr(0, 10);
       const todayTime = today.substr(11, 8);
 
