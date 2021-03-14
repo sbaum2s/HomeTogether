@@ -17,7 +17,12 @@
   >
     <v-btn @click="addMessage()" />
     <template v-slot:activator="{ on }">
-      <v-badge :content="messageCount" :value="hasMessages" :color="$attrs.color" overlap>
+      <v-badge
+        :content="unreadMessagesCount"
+        :value="hasMessages"
+        :color="$attrs.color"
+        overlap
+      >
         <v-btn icon large v-if="hasMessages" v-on="on">
           <v-icon>mdi-bell-ring</v-icon>
         </v-btn>
@@ -28,7 +33,11 @@
     </template>
 
     <v-list three-line>
-      <v-list-item v-for="(item, index) in items" :key="index" @click="clickNotificationItem(item)">
+      <v-list-item
+        v-for="(item, index) in items"
+        :key="index"
+        @click="clickNotificationItem(item)"
+      >
         <div>
           <div avatar role="menuitem">
             <v-sheet
@@ -40,17 +49,13 @@
               <v-list-item-content>
                 <v-list-item-title>
                   <span class="font-weigth-black text-capitalize">
-                    {{
-                    item.modifiedBy
-                    }}
+                    {{ item.modifiedBy }}
                   </span>
                   <span class="pl-5">{{ item.modifiedAt }}</span>
                 </v-list-item-title>
                 <v-list-item-subtitle>
                   <span class="font-weigth-black">
-                    {{
-                    item.prefix + ": "
-                    }}
+                    {{ item.prefix + ": " }}
                   </span>
                   <span>{{ item.title }}</span>
                 </v-list-item-subtitle>
@@ -78,7 +83,7 @@ export default {
         title: "PUSHED!",
         modifiedAt: new Date().toLocaleString("de-DE"),
         modifiedBy: "Admin",
-        description: "Student bearbeitet"
+        description: "Student bearbeitet",
       },
       disabled: false,
       absolute: false,
@@ -87,7 +92,7 @@ export default {
       closeOnClick: true,
       closeOnContentClick: false,
       offsetX: false,
-      offsetY: true
+      offsetY: true,
     };
   },
   computed: {
@@ -95,8 +100,17 @@ export default {
       return this.items.length;
     },
     hasMessages() {
-      return this.messageCount > 0;
-    }
+      return this.unreadMessagesCount > 0;
+    },
+    unreadMessagesCount() {
+      let count = 0;
+      this.items.forEach((item) => {
+        if (item.unread) {
+          count++;
+        }
+      });
+      return count;
+    },
   },
   methods: {
     loadMessageReadState(item) {
@@ -126,7 +140,7 @@ export default {
     clickNotificationItem(item) {
       item.unread = false;
       console.log("clickNotificationItem");
-    }
+    },
   },
   created() {
     // console.log("component created");
@@ -134,7 +148,7 @@ export default {
   mounted() {
     this.fetchNotifications();
     // console.log("notis", this.items.length);
-  }
+  },
 };
 </script>
 

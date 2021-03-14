@@ -26,9 +26,9 @@ const state = {
             to: "/shopping-list"
         },
         {
-            title: "empty",
-            icon: "mdi-chart-bubble",
-            to: "/components/icons"
+            title: "Aufgabenplan",
+            icon: "mdi-format-list-checks",
+            to: "/task-plan"
         },
         {
             title: "empty",

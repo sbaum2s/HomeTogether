@@ -73,7 +73,6 @@
         @click:event="showEvent"
         @click:more="viewDay"
         @click:date="viewDay"
-        @change="getEvents"
       ></v-calendar>
 
       <v-menu

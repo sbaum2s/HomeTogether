@@ -1,10 +1,63 @@
 <template>
-  <div class="home">
+  <div class="home mx-auto" style="width: 89%; max-width: 1000px">
     <v-row>
       <v-col cols="12" md="6" sm="6">
         <v-card elevation="6" class="my-3" outlined>
           <v-card-title>Hallo Timo,</v-card-title>
           <v-card-subtitle>wie war dein Tag heute?</v-card-subtitle>
+        </v-card>
+
+        <v-card elevation="6" class="my-3" outlined>
+          <v-card-title>Schnellzugriff</v-card-title>
+          <v-container>
+            <v-row class="mx-auto">
+              <v-col cols="4">
+                <v-card
+                  elevation="10"
+                  outlined
+                  class="justify-center"
+                  @click="$router.push('calendar')"
+                >
+                  <v-card-text class="pa-2 text-center">
+                    <v-icon size="50">mdi-calendar</v-icon>
+                    <span style="font-size: 12px; display: block"
+                      >Kalender</span
+                    >
+                  </v-card-text>
+                </v-card>
+              </v-col>
+
+              <v-col cols="4">
+                <v-card
+                  elevation="10"
+                  outlined
+                  class="justify-center"
+                  @click="$router.push('shopping-list')"
+                >
+                  <v-card-text class="pa-2 text-center">
+                    <v-icon size="50">mdi-notebook</v-icon>
+                    <span style="font-size: 12px; display: block"
+                      >Einkaufsliste</span
+                    >
+                  </v-card-text>
+                </v-card>
+              </v-col>
+
+              <v-col cols="4">
+                <v-card
+                  elevation="10"
+                  outlined
+                  class="justify-center"
+                  @click="$router.push('user')"
+                >
+                  <v-card-text class="pa-2 text-center">
+                    <v-icon size="50">mdi-account</v-icon>
+                    <span style="font-size: 12px; display: block">Konto</span>
+                  </v-card-text>
+                </v-card>
+              </v-col>
+            </v-row>
+          </v-container>
         </v-card>
 
         <v-card elevation="6" class="my-3" outlined>

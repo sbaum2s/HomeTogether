@@ -2,11 +2,11 @@
   <v-sheet class="pa-4">
     <v-card>
       <v-toolbar color="primary" dark>
-        <v-toolbar-title>User Profile</v-toolbar-title>
+        <v-toolbar-title>Mein Konto</v-toolbar-title>
       </v-toolbar>
       <v-tabs vertical>
-        <v-tab> <v-icon left>mdi-account</v-icon>Profile </v-tab>
-        <v-tab> <v-icon left>mdi-lock</v-icon>Permissions </v-tab>
+        <v-tab> <v-icon left>mdi-account</v-icon>Profil </v-tab>
+        <v-tab> <v-icon left>mdi-lock</v-icon>Benachrichtigung </v-tab>
         <v-tab> <v-icon left>mdi-account-cog</v-icon>Account </v-tab>
 
         <v-tab-item>
