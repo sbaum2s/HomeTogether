@@ -4,6 +4,8 @@ import Vuex from 'vuex'
 import dashboard from "./dashboard";
 import notifications from './notifications';
 import auth from './auth';
+import calendar from './calendar'
+import shoppingList from './shoppingList'
 
 Vue.use(Vuex)
 
@@ -39,6 +41,8 @@ export default new Vuex.Store({
     dashboard,
     notifications,
     auth,
+    calendar,
+    shoppingList,
   },
   strict: debug, //,  plugins: debug ? [createLogger()] : []
 });

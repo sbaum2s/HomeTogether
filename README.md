@@ -1,4 +1,4 @@
-# tr-master-app
+# anydesk-haushaltsplanner
 
 ## Project setup
 ```

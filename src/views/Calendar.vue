@@ -262,6 +262,7 @@
             <v-text-field
               v-model="dialogAddEventData.name"
               label="Betreff"
+              filled
               prepend-icon="mdi-text-subject"
             ></v-text-field>
           </v-col>
@@ -285,11 +286,30 @@
               <v-btn @click="saveColorPicker">Auswählen</v-btn>
             </v-dialog>
           </v-col>
+
+          <v-col cols="12" md="6">
+            <v-textarea
+              counter
+              filled
+              auto-grow
+              name="input-7-1"
+              label="Termindetails"
+              v-model="dialogAddEventData.details"
+              rows="3"
+            ></v-textarea>
+          </v-col>
         </v-row>
 
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn text color="primary" @click="dialog = false">
+          <v-btn
+            text
+            color="primary"
+            @click="
+              dialog = false;
+              addEvent();
+            "
+          >
             Erstellen
           </v-btn>
         </v-card-actions>
@@ -298,6 +318,8 @@
   </div>
 </template>
 <script>
+import { mapState } from "vuex";
+
 export default {
   data: () => ({
     type: "month",
@@ -316,7 +338,15 @@ export default {
       { text: "Mo - Fr", value: [1, 2, 3, 4, 5] },
     ],
     value: "",
-    events: [],
+    // events: [],
+    defaultEvent: {
+      name: "",
+      details: "",
+      start: "",
+      end: "",
+      color: "#0099ff",
+      timed: false,
+    },
     selectedEvent: {},
     selectedElement: null,
     selectedOpen: false,
@@ -330,7 +360,14 @@ export default {
       "grey darken-1",
     ],
     today: new Date(Date.now()).toISOString().substr(0, 10),
-    dialogAddEventData: {},
+    dialogAddEventData: {
+      name: "",
+      details: "",
+      start: "",
+      end: "",
+      color: "#0099ff",
+      timed: false,
+    },
     dialogAddEvent: false,
     datePicker1: false,
     datePicker2: false,
@@ -347,45 +384,23 @@ export default {
     ],
   }),
   methods: {
-    // getEvents({ start, end }) {
-    getEvents() {
-      const events = [
-        {
-          name: "Laura's Geburtstag",
-          details: "Laura wird heute 23 Jahre alt!",
-          start: this.formatDate(new Date("2021-03-13 00:00")),
-          end: this.formatDate(new Date("2021-03-13 23:59")),
-          color: "#000",
-          timed: false,
-        },
-      ];
-      //   console.log(start, end);
+    addEvent() {
+      const newEvent = this.dialogAddEventData;
+      const start = `${newEvent.start} ${newEvent.startTime}`;
+      const end = `${newEvent.end} ${newEvent.endTime}`;
+      console.log("test", start, end);
 
-      //   const min = new Date(`${start.date}T00:00:00`);
-      //   const max = new Date(`${end.date}T23:59:59`);
-      //   const days = (max.getTime() - min.getTime()) / 86400000;
-      //   const eventCount = this.rnd(days, days + 20);
+      this.$store.dispatch("calendar/addEvent", {
+        name: newEvent.name,
+        details: newEvent.details,
+        start: start,
+        end: end,
+        color: newEvent.color,
+        timed: false,
+      });
 
-      //   for (let i = 0; i < eventCount; i++) {
-      //     const allDay = this.rnd(0, 3) === 0;
-      //     const firstTimestamp = this.rnd(min.getTime(), max.getTime());
-      //     const first = new Date(firstTimestamp - (firstTimestamp % 900000));
-      //     const secondTimestamp = this.rnd(2, allDay ? 288 : 8) * 900000;
-      //     const second = new Date(first.getTime() + secondTimestamp);
-
-      //     events.push({
-      //       name: this.names[this.rnd(0, this.names.length - 1)],
-      //       start: first,
-      //       end: second,
-      //       color: this.colors[this.rnd(0, this.colors.length - 1)],
-      //       timed: !allDay,
-      //     });
-      //   }
-
-      this.events = events;
-    },
-    addEvent(eventData) {
-      console.log(eventData);
+      this.dialogAddEventData = this.defaultEvent;
+      this.dialogAddEvent = false;
     },
     saveColorPicker() {
       this.dialogColorPicker = false;
@@ -435,6 +450,7 @@ export default {
     },
   },
   computed: {
+    ...mapState("calendar", ["events"]),
     getSelectedMonth() {
       const monthNames = [];
       monthNames[0] = "Januar";

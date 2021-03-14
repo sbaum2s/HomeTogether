@@ -7,11 +7,11 @@
     :elevate-on-scroll="elevateOnScroll"
     :hide-on-scroll="hideOnScroll"
     extended
-    :height="$vuetify.breakpoint.lgAndUp ? '110' : '90'"
-    :extension-height="$vuetify.breakpoint.lgAndUp ? '80' : '90'"
+    :height="$vuetify.breakpoint.lgAndUp ? '110' : '70'"
+    :extension-height="$vuetify.breakpoint.lgAndUp ? '60' : '70'"
   >
     <v-container fluid fill-height pa-0 class="containerSize">
-      <router-link :to="{ name: 'Home' }">
+      <!--router-link :to="{ name: 'Home' }">
         <v-img
           alt="logo klein"
           class="shrink mt-1 hidden-lg-and-up"
@@ -28,9 +28,9 @@
           src="@/assets/logo.png"
           width="188"
         />
-      </router-link>
+      </router-link-->
       <v-spacer />
-      <h1>{{applicationTitle}}</h1>
+      <h1>{{ applicationTitle }}</h1>
       <v-spacer />
     </v-container>
     <template #extension>
@@ -40,7 +40,10 @@
           <v-icon v-else>mdi-menu</v-icon>
         </v-btn>
 
-        <v-toolbar-title class="hidden-sm-and-down font-weight-light" v-text="$route.name" />
+        <v-toolbar-title
+          class="hidden-sm-and-down font-weight-light"
+          v-text="$route.name"
+        />
 
         <v-spacer />
 
@@ -53,7 +56,7 @@
         </v-text-field>-->
 
         <section>
-          {{activeUser.username}}
+          {{ activeUser.username }}
           <router-link to="/login" v-if="!isLoggedIn">
             <v-icon>mdi-login</v-icon>
           </router-link>
@@ -89,20 +92,20 @@ export default {
   name: "DashboardCoreAppBar",
 
   components: {
-    Notifications: () => import("@/components/Notifications.vue")
+    Notifications: () => import("@/components/Notifications.vue"),
   },
 
   props: {
     value: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
 
   data: () => ({
     clipped: true, // this.$vuetify.breakpoint.mdAndUp,
     elevateOnScroll: true,
-    hideOnScroll: true
+    hideOnScroll: true,
   }),
 
   computed: {
@@ -114,19 +117,19 @@ export default {
       return this.$store.state.applicationInfo.title;
     },
     ...mapState("auth", ["isLoggedIn"]),
-    ...mapState("auth", ["activeUser"])
+    ...mapState("auth", ["activeUser"]),
   },
 
   methods: {
     ...mapMutations({
-      setDrawer: "dashboard/SET_DRAWER"
+      setDrawer: "dashboard/SET_DRAWER",
     }),
     logout() {
       this.$store.dispatch("auth/logout").then(() => {
         this.$router.push("/login");
         console.log("Logged out.");
       });
-    }
-  }
+    },
+  },
 };
 </script>

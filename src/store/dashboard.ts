@@ -21,9 +21,9 @@ const state = {
             to: "/calendar"
         },
         {
-            title: "empty",
-            icon: "mdi-format-font",
-            to: "/HomeDataIterator"
+            title: "Einkaufsliste",
+            icon: "mdi-notebook",
+            to: "/shopping-list"
         },
         {
             title: "empty",

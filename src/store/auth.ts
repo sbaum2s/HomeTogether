@@ -5,7 +5,7 @@ const state = {
 	users: [
 		{
 			"id": "0",
-			"username": "admin",
+			"username": "Timo",
 			"password": "admin1234",
 			"email": "admin@mail.de",
 			"birthdate": "1995-06-22",
