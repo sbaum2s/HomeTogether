@@ -1,5 +1,5 @@
-var webpack = require('webpack');
-var packageJson = require('./package.json');
+const webpack = require('webpack');
+const packageJson = require('./package.json');
 
 module.exports = {
   transpileDependencies: [
