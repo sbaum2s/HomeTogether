@@ -48,11 +48,12 @@ const actions = {
 	autoLogin({ commit }: any) {
 		const autoLoginUser = state.users.find(user => user.username === localStorage.getItem("token")?.split("-")[0])
 
-		return new Promise(resolve => {
-			commit("LOGIN_SUCCESS", autoLoginUser);
-			console.log("AutoLogin successful.");
+		if (autoLoginUser)
+			return new Promise(resolve => {
+				commit("LOGIN_SUCCESS", autoLoginUser);
+				console.log("AutoLogin successful.");
 
-		});
+			});
 	},
 	logout({ commit }: any) {
 		localStorage.removeItem("token");
